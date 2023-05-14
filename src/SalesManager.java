@@ -1,11 +1,11 @@
 public class SalesManager {
-    protected int[] sales;
+    protected static int[] sales;
 
     public SalesManager(int[] sales) {
         this.sales = sales;
     }
 
-    public int max() {
+    public static int max() {
         int max = -1;
         for (int sale : sales) {
             if (sale > max) {
@@ -14,4 +14,23 @@ public class SalesManager {
         }
         return max;
     }
+
+    public static int min() {
+        int min = Integer.MAX_VALUE;
+        for (int sale : sales) {
+            if (min > sale) {
+                min = sale;
+            }
+        }
+        return min;
+    }
+
+    public static int average() {
+        int sum = 0;
+        for (int sale : sales) {
+            sum += sale;
+        }
+        return (sum - ((min() + max()))) / (sales.length - 2);
+    }
+
 }
